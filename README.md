@@ -1,38 +1,77 @@
 # Prometheus Monitoring Lab
 
-This project sets up Prometheus alerts for CPU, memory, disk I/O, and network traffic using Node Exporter.
+This project demonstrates a monitoring setup with **Prometheus**, **Alertmanager**, **Grafana**, and **Node Exporter**.  
+It includes alerting rules, integrations with Slack, and stress testing scripts to trigger alerts for demo purposes.
 
-## Files
+---
 
-- **fire_all_stable.sh** — Generates high CPU, memory, disk, and network usage for testing alerts.
-- **stop_stable.sh** — Stops all load-generating processes.
-- **node_alerts.yml** — Prometheus alerting rules for system metrics.
+## 📂 Project Structure
 
-## Usage
+```
+prometheus-monitoring-lab/
+│
+├── configs/
+│   ├── prometheus.yml       # Prometheus main config
+│   ├── node_alerts.yml      # Alert rules for CPU, Memory, Disk, Network
+│   ├── alertmanager.yml     # Alertmanager configuration with Slack webhook
+│
+├── scripts/
+│   ├── fire_all_stable.sh   # Trigger all alerts (except Node Down)
+│   ├── stop_stable.sh       # Stop all stress tests
+│
+├── images/
+│   ├── Alertmanager_notification.png
+│   ├── Slack_notification.png
+│   ├── Grafana_graphs.png
+│   ├── Prometheus_firing.png
+│
+└── README.md
+```
 
-1. Copy `node_alerts.yml` to your Prometheus rules directory (e.g., `/etc/prometheus/rules/`).
-2. Reload Prometheus configuration.
-3. Run the load generator:
+---
+
+## 🚀 How to Run
+
+1. **Start Prometheus, Alertmanager, and Node Exporter**
    ```bash
-   chmod +x fire_all_stable.sh stop_stable.sh
-   ./fire_all_stable.sh
+   prometheus --config.file=configs/prometheus.yml
+   alertmanager --config.file=configs/alertmanager.yml
+   node_exporter
    ```
-4. Stop all load generators:
+
+2. **Start Grafana**
+   - Import dashboards for Node Exporter CPU, Memory, Disk, and Network.
+   - Connect Grafana to Prometheus.
+
+3. **Trigger All Alerts for Testing**
    ```bash
-   ./stop_stable.sh
+   ./scripts/fire_all_stable.sh
    ```
 
-## Alerts
+4. **Stop All Tests**
+   ```bash
+   ./scripts/stop_stable.sh
+   ```
 
-Alerts will trigger when:
-- CPU usage > 80% for 2 minutes
-- Memory usage > 85% for 2 minutes
-- Disk I/O > 5 MB/s for 2 minutes
-- Network traffic > 5 MB/s for 2 minutes
+---
 
-## Requirements
-- Prometheus
-- Node Exporter
-- stress-ng
-- iperf3
-- netcat (nc)
+## 📊 Sample Dashboards & Alerts
+
+### Grafana Dashboard
+![Grafana Graphs](images/Grafana_graphs.png)
+
+### Prometheus Firing Alerts
+![Prometheus Firing](images/Prometheus_firing.png)
+
+### Alertmanager Notifications
+![Alertmanager Notification](images/Alertmanager_notification.png)
+
+### Slack Notifications
+![Slack Notification](images/Slack_notification.png)
+
+---
+
+## 🛠 Notes
+- The scripts use `stress-ng`, `dd`, and `iperf3` to generate CPU, Memory, Disk, and Network load.
+- Network traffic tests require **iperf3** to be installed on both the Prometheus server and the monitored node.
+- Adjust alert thresholds in `configs/node_alerts.yml` to suit your environment.
