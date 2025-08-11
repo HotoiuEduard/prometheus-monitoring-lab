@@ -124,9 +124,3 @@ prometheus-monitoring-lab/
 - Slack integration for real-time incident response.
 
 ---
-
-## Demo Screenshots
-![Grafana Dashboard](images/Grafana_graphs.png)
-![Prometheus Firing](images/Prometheus_firing.png)
-![Alertmanager Notification](images/Alertmanager_notification.png)
-![Slack Notification](images/Slack_notification.png)
