@@ -75,3 +75,58 @@ prometheus-monitoring-lab/
 - The scripts use `stress-ng`, `dd`, and `iperf3` to generate CPU, Memory, Disk, and Network load.
 - Network traffic tests require **iperf3** to be installed on both the Prometheus server and the monitored node.
 - Adjust alert thresholds in `configs/node_alerts.yml` to suit your environment.
+
+## 📌 Prometheus Monitoring Lab – Overview
+
+### 1. Objective
+- Configure a monitoring environment using **Prometheus**, **Alertmanager**, **Grafana**, and **Node Exporter**.
+- Create alerts for server resource usage and send notifications to **Slack**.
+- Simulate real load scenarios to test alerts.
+
+---
+
+### 2. System Architecture
+- **Prometheus** – Collects metrics from servers (via Node Exporter).
+- **Alertmanager** – Manages alerts and sends Slack notifications.
+- **Grafana** – Displays metrics and alerts in custom dashboards.
+- **Node Exporter** – Exposes hardware and OS metrics.
+- Slack integration via **Incoming Webhook**.
+
+---
+
+### 3. Main Configurations
+- **`prometheus.yml`** – Configures scrape targets and alert rules.
+- **`node_alerts.yml`** – Defines rules for:
+  - High CPU Usage (>80%)
+  - High Memory Usage (>85%)
+  - High Disk I/O (>5 MB/s)
+  - High Network Traffic (>5 MB/s)
+- **`alertmanager.yml`** – Configures Slack receiver.
+
+---
+
+### 4. Alert Simulation
+- **`fire_all_stable.sh`** – Triggers CPU, memory, disk I/O, and network load.
+- **`stop_stable.sh`** – Stops all stress processes.
+
+---
+
+### 5. Results
+- Grafana dashboards showing CPU, memory, disk I/O, and network traffic in one view.
+- Alerts visible in Prometheus and Alertmanager.
+- Slack notifications for each triggered alert.
+
+---
+
+### 6. Conclusion
+- Full monitoring and alerting solution.
+- Scalable and easy to adapt to other environments.
+- Slack integration for real-time incident response.
+
+---
+
+## 📸 Demo Screenshots
+![Grafana Dashboard](images/Grafana_graphs.png)
+![Prometheus Firing](images/Prometheus_firing.png)
+![Alertmanager Notification](images/Alertmanager_notification.png)
+![Slack Notification](images/Slack_notification.png)
