@@ -5,7 +5,7 @@ It includes alerting rules, integrations with Slack, and stress testing scripts 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 prometheus-monitoring-lab/
@@ -30,7 +30,7 @@ prometheus-monitoring-lab/
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. **Start Prometheus, Alertmanager, and Node Exporter**
    ```bash
@@ -55,7 +55,7 @@ prometheus-monitoring-lab/
 
 ---
 
-## 📊 Sample Dashboards & Alerts
+## Sample Dashboards & Alerts
 
 ### Grafana Dashboard
 ![Grafana Graphs](images/Grafana_graphs.png)
@@ -71,12 +71,12 @@ prometheus-monitoring-lab/
 
 ---
 
-## 🛠 Notes
+## Notes
 - The scripts use `stress-ng`, `dd`, and `iperf3` to generate CPU, Memory, Disk, and Network load.
 - Network traffic tests require **iperf3** to be installed on both the Prometheus server and the monitored node.
 - Adjust alert thresholds in `configs/node_alerts.yml` to suit your environment.
 
-## 📌 Prometheus Monitoring Lab – Overview
+## Prometheus Monitoring Lab – Overview
 
 ### 1. Objective
 - Configure a monitoring environment using **Prometheus**, **Alertmanager**, **Grafana**, and **Node Exporter**.
@@ -125,7 +125,7 @@ prometheus-monitoring-lab/
 
 ---
 
-## 📸 Demo Screenshots
+## Demo Screenshots
 ![Grafana Dashboard](images/Grafana_graphs.png)
 ![Prometheus Firing](images/Prometheus_firing.png)
 ![Alertmanager Notification](images/Alertmanager_notification.png)
